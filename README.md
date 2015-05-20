@@ -1,9 +1,8 @@
-##Important pages
+### Important pages
+* [Download latest version!](http://google.com)
+* [Example data](http://google.com)
+* [FAQ](http://google.com)
+* [Questions/Issues](http://google.com)
+* [Website](http://franck.engin.brown.edu)
 
-* [Latest version](www.google.com)
-* FAQ
-* Issues
 
-Please check the project page http://francklab.github.io/DVC-Simulator/
-
-[Visit GitHub!](www.github.com)
