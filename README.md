@@ -1,6 +1,6 @@
 ##Important pages
 
-* Latest version
+* [Latest version](www.github.com)
 * FAQ
 * Issues
 
