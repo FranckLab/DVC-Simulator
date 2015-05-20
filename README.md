@@ -12,9 +12,13 @@ The purpose of the stimulator is to allow the user to check if the speckle patte
 
 Here, the Matlab script syntheticaly deformes the input volume image according to a prescribed displacement fields. Then, the DVC algorithm computes the displacements, which can be compared with the prescribed displacements to see if the match. The Matlab-GUI also plots strains. 
 
-## Running the script
+## Running the Matlab-GUI
 
-## How?
+### How?
+Save the 3D image stack, a 3 dimensional matrix (intensity values are stored at x, y and z position), in .mat file in the folder containing the matlab script. Have the same folder as the directory in Matlab and run the following command in command window to open the GUI:
+```
+DVC_simulator
+```
 
 
 ### Health warning
