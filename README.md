@@ -29,6 +29,9 @@ The DVC simulator requires a 3D stack to be read in, which depending on the volu
 ### GUI view troubleshooting
 The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons. 
 
+### Input image size
+We recommend that the input image should have at least have 96 pixels in each dimension. 
+
 ## Author
 
 ## Contact and support
