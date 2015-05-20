@@ -12,7 +12,7 @@ The purpose of the stimulator is to allow the user to check if the speckle patte
 
 Here, the Matlab script syntheticaly deformes the input volume image according to a prescribed displacement fields. Then, the DVC algorithm computes the displacements, which can be compared with the prescribed displacements to see if the match. The Matlab-GUI also plots strains. 
 
-## Running the Matlab-GUI
+# Running the Matlab-GUI
 
 ### Steps
 1. Save the 3D image stack, a 3 dimensional matrix (intensity values are stored at x, y and z position), in .mat file in the folder containing the matlab script. 
@@ -26,7 +26,7 @@ Here, the Matlab script syntheticaly deformes the input volume image according t
 ### Health warning!
 The DVC simulator requires a 3D stack to be read in, which depending on the volume size can require a **large amount of RAM** in Matlab, and thus when running the simulator from a laptop, we strongly suggest to use the resize option within the GUI to decrease the total stack dimensions. My macbook air can only handle 128 x 128 x 96 sufficiently. 
 
-## FAQ
+# FAQ
 **The GUI looks squashed and button don't appear properly, what should I do?**
 The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons.
 
@@ -36,9 +36,9 @@ The GUI in newer versions of Matlab and high resolution screens, can sometimes g
 We recommend that the input image stack should have at least have 96 pixels in each dimension. 
 
 
-## Author
+# Author
 
-## Contact and support
+# Contact and support
 For questions, please first refer to [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ) and [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues). Add a new quesiton if similar issue hasn't been reported. We shall help you at the earlist. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
 
 
