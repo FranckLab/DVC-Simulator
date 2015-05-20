@@ -14,12 +14,9 @@ Here, the Matlab script syntheticaly deformes the input volume image according t
 
 ## Running the Matlab-GUI
 
-### How?
+### Steps
 1. Save the 3D image stack, a 3 dimensional matrix (intensity values are stored at x, y and z position), in .mat file in the folder containing the matlab script. 
-2. Have the same folder as the directory in Matlab and run the following command in command window to open the GUI:
-```matlab
-DVC_simulator
-```
+2. Have the same folder as the directory in Matlab and run the following command in command window to open the GUI: `DVC_simulator`
 3. Use the upload button load the image stack.
 4. If needed, resize the volume to a decrease the size. 
 5. Adjust the subset size and subset spacing if needed, or can leave it at default value.
