@@ -27,10 +27,10 @@ Here, the Matlab script syntheticaly deformes the input volume image according t
 The DVC simulator requires a 3D stack to be read in, which depending on the volume size can require a **large amount of RAM** in Matlab, and thus when running the simulator from a laptop, we strongly suggest to use the resize option within the GUI to decrease the total stack dimensions. My macbook air can only handle 128 x 128 x 96 sufficiently. 
 
 ## FAQ
-* The GUI looks squashed and button don't appear properly, what should I do?
+**Q** The GUI looks squashed and button don't appear properly, what should I do?
 **A** The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons.
 
-* What is the recommened minimum size of the input image stack?
+**Q** What is the recommened minimum size of the input image stack?
 **A** We recommend that the input image stack should have at least have 96 pixels in each dimension. 
 
 ## Author
