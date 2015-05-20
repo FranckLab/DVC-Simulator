@@ -7,7 +7,7 @@ The DVC simulator is the 3D cousin of the DIC Simulator. It’s also a Matlab-ba
 * [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues)
 * [Franck Lab](http://franck.engin.brown.edu)
 
-## Purpose
+# Purpose
 The purpose of the stimulator is to allow the user to check if the speckle pattern and intenisty in the volume images are good enough for DVC to compute displacement reliably. If the results look good, the user can use FIDVC algorithm to compute displacments between volume images. 
 
 Here, the Matlab script syntheticaly deformes the input volume image according to a prescribed displacement fields. Then, the DVC algorithm computes the displacements, which can be compared with the prescribed displacements to see if the match. The Matlab-GUI also plots strains. 
