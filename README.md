@@ -21,14 +21,16 @@ Here, the Matlab script syntheticaly deformes the input volume image according t
 4. If needed, resize the volume to a decrease the size. 
 5. Adjust the subset size and subset spacing if needed, or can leave it at default value.
 6. Adjust the prescribed strain and translation, or can leave it at the default value.  
+7. Hit **Go!**
 
-
-### Health warning
+### Health warning!
 The DVC simulator requires a 3D stack to be read in, which depending on the volume size can require a **large amount of RAM** in Matlab, and thus when running the simulator from a laptop, we strongly suggest to use the resize option within the GUI to decrease the total stack dimensions. My macbook air can only handle 128 x 128 x 96 sufficiently. 
 
 
+## Author
 
-
+## Contact and support
+For questions, please first refer to the issues page. Add a new quesiton if similar issue hasn't been reported. We shall help you at the earlist. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
 
 
 
