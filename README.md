@@ -1,10 +1,10 @@
 The DVC simulator is the 3D cousin of the DIC Simulator. It’s also a Matlab-based GUI that assesses how “well” a particular user-provided volumetric image correlates given 4 different simulated 3D displacement fields. The import format for the 3D image stack is .mat, which is a 3 dimensional matrix (intensity values are stored at every x,y,z position). The purpose of the simulator is the same as for the DIC simulator, and we have found it to be of significant time and effort savings.
 
 ### Important pages
-* [Download latest version!](http://google.com)
+* [Download latest version v1.0!](https://github.com/FranckLab/DVC-Simulator/releases)
 * [Example data](http://google.com)
-* [FAQ](http://google.com)
-* [Questions/Issues](http://google.com)
+* [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ)
+* [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues)
 * [Franck Lab](http://franck.engin.brown.edu)
 
 ## Purpose
@@ -26,16 +26,19 @@ Here, the Matlab script syntheticaly deformes the input volume image according t
 ### Health warning!
 The DVC simulator requires a 3D stack to be read in, which depending on the volume size can require a **large amount of RAM** in Matlab, and thus when running the simulator from a laptop, we strongly suggest to use the resize option within the GUI to decrease the total stack dimensions. My macbook air can only handle 128 x 128 x 96 sufficiently. 
 
-### GUI view troubleshooting
-The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons. 
+## FAQ
+* The GUI looks squashed and button don't appear properly, what should I do?
 
-### Input image size
-We recommend that the input image should have at least have 96 pixels in each dimension. 
+**A** The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons.
+
+* What is the recommened minimum size of the input image stack?
+
+**A** We recommend that the input image stack should have at least have 96 pixels in each dimension. 
 
 ## Author
 
 ## Contact and support
-For questions, please first refer to the issues page. Add a new quesiton if similar issue hasn't been reported. We shall help you at the earlist. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
+For questions, please first refer to [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ) and [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues). Add a new quesiton if similar issue hasn't been reported. We shall help you at the earlist. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
 
 
 
