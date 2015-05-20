@@ -8,9 +8,9 @@ The DVC simulator is the 3D cousin of the DIC Simulator. It’s also a Matlab-ba
 * [Franck Lab](http://franck.engin.brown.edu)
 
 ## Purpose
-The purpose of the stimulator is to allow the user to check if the speckle pattern and intenisty in the volume images are good enough for DVC to compute displacement reliably. If the results look good, the user can use FIDVC algorithm to compute displacments between volume images. 
+The purpose of the stimulator is to allow the user to check if the speckle pattern and intensity in the volume images are good enough for DVC to compute displacement reliably. If the results look good, the user can use FIDVC algorithm to compute displacements between volume images. 
 
-Here, the Matlab script syntheticaly deformes the input volume image according to a prescribed displacement fields. Then, the DVC algorithm computes the displacements, which can be compared with the prescribed displacements to see if the match. The Matlab-GUI also plots strains. 
+Here, the Matlab script synthetically deforms the input volume image according to a prescribed displacement fields. Then, the DVC algorithm computes the displacements, which can be compared with the prescribed displacements to see if the match. The Matlab-GUI also plots strains. 
 
 ## Running the Matlab-GUI
 
@@ -31,7 +31,7 @@ The DVC simulator requires a 3D stack to be read in, which depending on the volu
 The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons.
 
 
-**What is the recommened minimum size of the input image stack?**
+**What is the recommended minimum size of the input image stack?**
 
 We recommend that the input image stack should have at least have 96 pixels in each dimension. 
 
@@ -39,7 +39,7 @@ We recommend that the input image stack should have at least have 96 pixels in e
 ## Author
 
 ## Contact and support
-For questions, please first refer to [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ) and [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues). Add a new quesiton if similar issue hasn't been reported. We shall help you at the earlist. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
+For questions, please first refer to [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ) and [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues). Add a new question if similar issue hasn't been reported. We shall help you at the earliest. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
 
 
 
