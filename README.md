@@ -37,6 +37,7 @@ We recommend that the input image stack should have at least have 96 pixels in e
 
 
 # Author
+Paper coming soon. Please cite in future. 
 
 # Contact and support
 For questions, please first refer to [FAQ](https://github.com/FranckLab/DVC-Simulator#FAQ) and [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues). Add a new question if similar issue hasn't been reported. We shall help you at the earliest. The author's contact information can be found at [Franck Lab](http://franck.engin.brown.edu).
