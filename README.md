@@ -28,6 +28,7 @@ The DVC simulator requires a 3D stack to be read in, which depending on the volu
 
 # FAQ
 **The GUI looks squashed and button don't appear properly, what should I do?**
+
 The GUI in newer versions of Matlab and high resolution screens, can sometimes get squashed with various buttons and icons not appearing properly. The easiest way to solve this issue is to resize the GUI layout manually on your computer. Use the command `guide DVC_simulator.fig` and resize the buttons.
 
 
