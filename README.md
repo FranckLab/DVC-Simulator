@@ -5,6 +5,7 @@ The DVC simulator is the 3D cousin of the DIC Simulator. It’s also a Matlab-ba
 * [Example data](https://drive.google.com/folderview?id=0ByhZqlrbo5srUDI5clRCM3VCX3M&usp=sharing)
 * [FAQ](https://github.com/FranckLab/DVC-Simulator/blob/master/README.md#faq)
 * [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues)
+* [Cite](https://github.com/FranckLab/DVC-Simulator/blob/master/README.md#cite)
 * [Franck Lab](http://franck.engin.brown.edu)
 
 # Purpose
