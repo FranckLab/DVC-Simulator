@@ -1,8 +1,8 @@
 The DVC simulator is the 3D cousin of the DIC Simulator. It’s also a Matlab-based GUI that assesses how “well” a particular user-provided volumetric image correlates given 4 different simulated 3D displacement fields. The import format for the 3D image stack is .mat, which is a 3 dimensional matrix (intensity values are stored at every x,y,z position). The purpose of the simulator is the same as for the DIC simulator, and we have found it to be of significant time and effort savings.
 
 ## Important pages
-* [Download latest version v1.0!](https://github.com/FranckLab/DVC-Simulator/releases)
-* [Example data](http://franck.engin.brown.edu/~christianfranck/FranckLab/downloads/2D_DIC.zip)
+* [Download latest version v1.1!](https://github.com/FranckLab/DVC-Simulator/releases)
+* [Example data](https://drive.google.com/folderview?id=0ByhZqlrbo5srUDI5clRCM3VCX3M&usp=sharing)
 * [FAQ](https://github.com/FranckLab/DVC-Simulator/blob/master/README.md#faq)
 * [Questions/Issues](https://github.com/FranckLab/DVC-Simulator/issues)
 * [Franck Lab](http://franck.engin.brown.edu)
@@ -15,7 +15,7 @@ Here, the Matlab script synthetically deforms the input volume image according t
 # Running the Matlab-GUI
 
 ## Steps
-1. Save the 3D image stack, a 3 dimensional matrix (intensity values are stored at x, y and z position), in .mat file in the folder containing the matlab script. 
+1. Save the 3D image stack, a 3 dimensional matrix (intensity values are stored at x, y and z position), in .mat file in the folder containing the matlab script. Download the [example data](https://drive.google.com/folderview?id=0ByhZqlrbo5srUDI5clRCM3VCX3M&usp=sharing for an example test on your computer. 
 2. Have the same folder as the directory in Matlab and run the following command in command window to open the GUI: `DVC_simulator`
 3. Use the upload button load the image stack.
 4. If needed, resize the volume to a decrease the size. 
