@@ -34,7 +34,7 @@ function varargout = DVC_simulator(varargin)
 
 % Edit the above text to modify the response to help DVC_simulator
 
-% Last Modified by GUIDE v2.5 17-Mar-2015 22:25:36
+% Last Modified by GUIDE v2.5 16-Sep-2015 16:39:58
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -55,6 +55,48 @@ else
 end
 % End initialization code - DO NOT EDIT
 
+function cmap = CMRmap(M)
+%   REFERENCE
+% 
+%   [1] Rappaport, C. 2002: "A Color Map for Effective
+%   Black-and-White Rendering of Color Scale Images", IEEE
+%   Antenna's and Propagation Magazine, Vol.44, No.3,
+%   pp.94-96 (June).
+% 
+% See also GRAY.
+% !---
+% ==========================================================
+% Last changed:     $Date: 2012-12-20 14:18:42 +0000 (Thu, 20 Dec 2012) $
+% Last committed:   $Revision: 232 $
+% Last changed by:  $Author: ch0022 $
+% ==========================================================
+% !---
+
+% default colormap size
+if nargin < 1, M = size(get(gcf,'colormap'),1); end
+
+% reference colour map
+% adapted from article to produce more linear luminance
+CMRref=...
+    [0    0    0;
+     0.1  0.1  0.35;
+     0.3  0.15 0.65;
+     0.6  0.2  0.50;
+     1    0.25 0.15;
+     0.9  0.55  0;
+     0.9  0.75 0.1;
+     0.9  0.9  0.5;
+     1    1    1];
+
+% Interpolate colormap to colormap size
+cmap = zeros(M,3);
+for c = 1:3
+    cmap(:,c) = interp1((1:9)',CMRref(:,c),linspace(1,9,M)','spline');
+end
+
+% Limit to range [0,1]
+cmap = cmap-min(cmap(:));
+cmap = cmap./max(cmap(:));
 
 % --- Executes just before DVC_simulator is made visible.
 function DVC_simulator_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -212,341 +254,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 handles.popup = 1;
 guidata(hObject, handles);
-
-% % --- Executes on button press in radiobutton16. u1
-% function radiobutton16_Callback(hObject, eventdata, handles)
-% % hObject    handle to radiobutton19 (see GCBO)
-% % eventdata  reserved - to be defined in a future version of MATLAB
-% % handles    structure with handles and user data (see GUIDATA)
-% % Hint: get(hObject,'Value') returns toggle state of radiobutton19
-% m = handles.m; 
-% n = handles.n; 
-% p = handles.p; 
-% 
-% if handles.popup == 1,
-%     handles.u = handles.ut;
-%     handles.v = handles.vt;
-%     handles.w = handles.wt;
-% 
-% end
-% if handles.popup == 2,
-%     handles.u = handles.ua;
-%     handles.v = handles.va;
-%     handles.w = handles.wa;
-% 
-% end
-% if handles.popup == 3,
-%     handles.u = handles.us;
-%     handles.v = handles.vs;
-%     handles.w = handles.ws;
-% 
-% end
-% if handles.popup == 4,
-%     handles.u = handles.up;
-%     handles.v = handles.vp;
-%     handles.w = handles.wp;
-% 
-% end
-% 
-% handles.displ = sqrt(handles.u.^2 + handles.v.^2 + handles.w.^2);
-% 
-% axes(handles.axes2);
-% %im(handles.tpic);
-% handles.xx = squeeze(handles.x(:,:,round(p/2)));
-% handles.yy = squeeze(handles.y(:,:,round(p/2)));
-% handles.uxy = squeeze(handles.u(:,:,round(p/2)));
-% 
-% %handles.displ;
-% contourf(handles.xx, handles.yy,handles.uxy); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% axes(handles.axes3);
-% handles.yy = squeeze(handles.y(:,round(n/2),:));
-% handles.zz = squeeze(handles.z(:,round(n/2),:));
-% handles.uyz = squeeze(handles.u(:,round(n/2),:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.yy,handles.uyz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% axes(handles.axes15);
-% handles.xx = squeeze(handles.x(round(m/2),:,:));
-% handles.zz = squeeze(handles.z(round(m/2),:,:));
-% handles.uxz = squeeze(handles.u(round(m/2),:,:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.xx,handles.uxz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',11,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% % --- Executes on button press in radiobutton15. u3
-% function radiobutton15_Callback(hObject, eventdata, handles)
-% % hObject    handle to radiobutton18 (see GCBO)
-% % eventdata  reserved - to be defined in a future version of MATLAB
-% % handles    structure with handles and user data (see GUIDATA)
-% % Hint: get(hObject,'Value') returns toggle state of radiobutton18
-% m = handles.m; 
-% n = handles.n; 
-% p = handles.p; 
-% 
-% if handles.popup == 1,
-%     handles.u = handles.ut;
-%     handles.v = handles.vt;
-%     handles.w = handles.wt;
-% 
-% end
-% if handles.popup == 2,
-%     handles.u = handles.ua;
-%     handles.v = handles.va;
-%     handles.w = handles.wa;
-% 
-% end
-% if handles.popup == 3,
-%     handles.u = handles.us;
-%     handles.v = handles.vs;
-%     handles.w = handles.ws;
-% 
-% end
-% if handles.popup == 4,
-%     handles.u = handles.up;
-%     handles.v = handles.vp;
-%     handles.w = handles.wp;
-% 
-% end
-% 
-% handles.displ = sqrt(handles.u.^2 + handles.v.^2 + handles.w.^2);
-% 
-% axes(handles.axes2);
-% %im(handles.tpic);
-% handles.xx = squeeze(handles.x(:,:,round(p/2)));
-% handles.yy = squeeze(handles.y(:,:,round(p/2)));
-% handles.wxy = squeeze(handles.w(:,:,round(p/2)));
-% 
-% %handles.displ;
-% contourf(handles.xx, handles.yy,handles.wxy); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% axes(handles.axes3);
-% handles.yy = squeeze(handles.y(:,round(n/2),:));
-% handles.zz = squeeze(handles.z(:,round(n/2),:));
-% handles.wyz = squeeze(handles.w(:,round(n/2),:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.yy,handles.wyz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% axes(handles.axes15);
-% handles.xx = squeeze(handles.x(round(m/2),:,:));
-% handles.zz = squeeze(handles.z(round(m/2),:,:));
-% handles.wxz = squeeze(handles.w(round(m/2),:,:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.xx,handles.wxz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',11,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% % --- Executes on button press in radiobutton13. magU
-% function radiobutton13_Callback(hObject, eventdata, handles)
-% % hObject    handle to radiobutton16 (see GCBO)
-% % eventdata  reserved - to be defined in a future version of MATLAB
-% % handles    structure with handles and user data (see GUIDATA)
-% 
-% % Hint: get(hObject,'Value') returns toggle state of radiobutton16
-% m = handles.m; 
-% n = handles.n; 
-% p = handles.p; 
-% 
-% if handles.popup == 1,
-%     handles.u = handles.ut;
-%     handles.v = handles.vt;
-%     handles.w = handles.wt;
-% 
-% end
-% if handles.popup == 2,
-%     handles.u = handles.ua;
-%     handles.v = handles.va;
-%     handles.w = handles.wa;
-% 
-% end
-% if handles.popup == 3,
-%     handles.u = handles.us;
-%     handles.v = handles.vs;
-%     handles.w = handles.ws;
-% 
-% end
-% if handles.popup == 4,
-%     handles.u = handles.up;
-%     handles.v = handles.vp;
-%     handles.w = handles.wp;
-% 
-% end
-% 
-% handles.displ = sqrt(handles.u.^2 + handles.v.^2 + handles.w.^2);
-% 
-% axes(handles.axes2);
-% %im(handles.tpic);
-% handles.xx = squeeze(handles.x(:,:,round(p/2)));
-% handles.yy = squeeze(handles.y(:,:,round(p/2)));
-% handles.displxy = squeeze(handles.displ(:,:,round(p/2)));
-% if handles.popup == 4,
-%     handles.xx = squeeze(handles.x(:,:,round(p/2)));
-%     handles.yy = squeeze(handles.y(:,:,round(p/2)));
-%     handles.displxy = squeeze(handles.displ(:,:,round(p/2)));
-% end
-% 
-% %handles.displ;
-% contourf(handles.xx, handles.yy,handles.displxy); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% axes(handles.axes3);
-% handles.yy = squeeze(handles.y(:,round(n/2),:));
-% handles.zz = squeeze(handles.z(:,round(n/2),:));
-% handles.displyz = squeeze(handles.displ(:,round(n/2),:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.yy,handles.displyz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% axes(handles.axes15);
-% handles.xx = squeeze(handles.x(round(m/2),:,:));
-% handles.zz = squeeze(handles.z(round(m/2),:,:));
-% handles.displxz = squeeze(handles.displ(round(m/2),:,:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.xx,handles.displxz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',11,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% % --- Executes on button press in radiobutton14. u2
-% function radiobutton14_Callback(hObject, eventdata, handles)
-% % hObject    handle to radiobutton17 (see GCBO)
-% % eventdata  reserved - to be defined in a future version of MATLAB
-% % handles    structure with handles and user data (see GUIDATA)
-% 
-% % Hint: get(hObject,'Value') returns toggle state of radiobutton17
-% 
-% m = handles.m; 
-% n = handles.n; 
-% p = handles.p; 
-% 
-% if handles.popup == 1,
-%     handles.u = handles.ut;
-%     handles.v = handles.vt;
-%     handles.w = handles.wt;
-% 
-% end
-% if handles.popup == 2,
-%     handles.u = handles.ua;
-%     handles.v = handles.va;
-%     handles.w = handles.wa;
-% 
-% end
-% if handles.popup == 3,
-%     handles.u = handles.us;
-%     handles.v = handles.vs;
-%     handles.w = handles.ws;
-% 
-% end
-% if handles.popup == 4,
-%     handles.u = handles.up;
-%     handles.v = handles.vp;
-%     handles.w = handles.wp;
-% 
-% end
-% 
-% %handles.displ = sqrt(handles.u.^2 + handles.v.^2 + handles.w.^2);
-% 
-% axes(handles.axes2);
-% %im(handles.tpic);
-% handles.xx = squeeze(handles.x(:,:,round(p/2)));
-% handles.yy = squeeze(handles.y(:,:,round(p/2)));
-% handles.vxy = squeeze(handles.v(:,:,round(p/2)));
-% 
-% %handles.displ;
-% contourf(handles.xx, handles.yy,handles.vxy); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% 
-% axes(handles.axes3);
-% handles.yy = squeeze(handles.y(:,round(n/2),:));
-% handles.zz = squeeze(handles.z(:,round(n/2),:));
-% handles.vyz = squeeze(handles.v(:,round(n/2),:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.yy,handles.vyz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',12,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
-% 
-% axes(handles.axes15);
-% handles.xx = squeeze(handles.x(round(m/2),:,:));
-% handles.zz = squeeze(handles.z(round(m/2),:,:));
-% handles.vxz = squeeze(handles.v(round(m/2),:,:));
-% 
-% %handles.displ;
-% contourf(handles.zz, handles.xx,handles.vxz); colorbar;
-% h = colorbar;
-% set(get(h,'title'),'string','Pixel','fontweight','b','fontsize',11,'color','k');
-% set(h,'fontweight','b', 'fontsize',12);
-% grid on
-% axis tight
-% set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
 
 %Setting the DVC Subset size for the DVC
 function edit8_Callback(hObject, eventdata, handles)
@@ -1701,3 +1408,155 @@ axis tight
 set(gca,'fontweight','b','FontSize',12,'xcolor','k','ycolor','k');
 xlabel('z (pixel)','fontweight','b','FontSize',12); 
 ylabel('x (pixel)','fontweight','b','FontSize',12);
+
+
+% --- Executes on button press in viewdef.
+function viewdef_Callback(hObject, eventdata, handles)
+% hObject    handle to viewdef (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Isize = size(handles.pic);
+original_image = handles.pic;
+oxy = squeeze(handles.pic(:,:,round(Isize(3)/2)));
+oyz = squeeze(handles.pic(:,round(Isize(2)/2),:));
+oxz = squeeze(handles.pic(round(Isize(1)/2),:,:));
+figure; colormap gray; set(gcf,'Color','white');
+subplot(3,3,[1 2 4 5]); imagesc(oxy); axis image; title('Original Image: X-Y'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[3 6]); imagesc(oyz); axis image; title('Y-Z'); 
+set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[7 8]); imagesc(oxz'); axis image; title('X-Z'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b');
+hold off;
+
+translated_image = handles.tpic;
+txy = squeeze(handles.tpic(:,:,round(Isize(3)/2)));
+tyz = squeeze(handles.tpic(:,round(Isize(2)/2),:));
+txz = squeeze(handles.tpic(round(Isize(1)/2),:,:));
+figure; colormap gray; set(gcf,'Color','white');
+subplot(3,3,[1 2 4 5]); imagesc(txy); axis image; title('Translated Image: X-Y'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[3 6]); imagesc(txz); axis image; title('Y-Z'); 
+set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[7 8]); imagesc(txz'); axis image; title('X-Z'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b');
+hold off;
+
+strain_image = handles.strpic;
+strxy = squeeze(handles.strpic(:,:,round(Isize(3)/2)));
+stryz = squeeze(handles.strpic(:,round(Isize(2)/2),:));
+strxz = squeeze(handles.strpic(round(Isize(1)/2),:,:));
+figure; colormap gray; set(gcf,'Color','white');
+subplot(3,3,[1 2 4 5]); imagesc(strxy); axis image; title('Uniaxial Image: X-Y'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[3 6]); imagesc(stryz); axis image; title('Y-Z'); 
+set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[7 8]); imagesc(strxz'); axis image; title('X-Z'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b');
+hold off;
+
+shear_image = handles.shpic;
+shxy = squeeze(handles.shpic(:,:,round(Isize(3)/2)));
+shyz = squeeze(handles.shpic(:,round(Isize(2)/2),:));
+shxz = squeeze(handles.shpic(round(Isize(1)/2),:,:));
+figure; colormap gray; set(gcf,'Color','white');
+subplot(3,3,[1 2 4 5]); imagesc(shxy); axis image; title('Shear Image: X-Y'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[3 6]); imagesc(shyz); axis image; title('Y-Z'); 
+set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[7 8]); imagesc(shxz'); axis image; title('X-Z'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b');
+hold off;
+
+pointload_image = handles.ppic;
+pxy = squeeze(handles.ppic(:,:,round(Isize(3)/2)));
+pyz = squeeze(handles.ppic(:,round(Isize(2)/2),:));
+pxz = squeeze(handles.ppic(round(Isize(1)/2),:,:));
+figure; colormap gray; set(gcf,'Color','white');
+subplot(3,3,[1 2 4 5]); imagesc(pxy); axis image; title('Point Force Image: X-Y'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[3 6]); imagesc(pyz); axis image; title('Y-Z'); 
+set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+subplot(3,3,[7 8]); imagesc(pxz'); axis image; title('X-Z'); 
+set(gca,'YDir','normal','FontName','Helvetica','fontweight','b');
+hold off;
+
+imagechoice = questdlg('Would you like to save the reference and deformed xy images?', ...
+    'Save images', ...
+    'Save to *.tif','Save to *.mat','No','No');
+% Handle response
+switch imagechoice
+    case 'Save to *.tif'
+        imwrite(uint8(round(255*flip(oxy,1)./max(oxy(:)))),'original_image.tif');
+        imwrite(uint8(round(255*flip(txy,1)./max(txy(:)))),'translated_image.tif');
+        imwrite(uint8(round(255*flip(strxy,1)./max(strxy(:)))),'strain_image.tif');
+        imwrite(uint8(round(255*flip(shxy,1)./max(shxy(:)))),'shear_image.tif');
+        imwrite(uint8(round(255*flip(pxy,1)./max(pxy(:)))),'pointload_image.tif');
+    case 'Save to *.mat'
+        save('imagedata.mat','original_image','translated_image','strain_image','shear_image','pointload_image');
+    case 'No'
+end
+
+usize = size(handles.ut);
+umx = cell(1,4);
+umx{1}{3} = handles.wt; umx{1}{2} = handles.vt; umx{1}{1} = handles.ut;
+umx{2}{3} = handles.wa; umx{2}{2} = handles.va; umx{2}{1} = handles.ua;
+umx{3}{3} = handles.ws; umx{3}{2} = handles.vs; umx{3}{1} = handles.us;
+umx{4}{3} = handles.wp; umx{4}{2} = handles.vp; umx{4}{1} = handles.up;
+
+uall = cell(1,4); %order of {translation, strain, shear, pointload}
+for i=1:4
+    uall{i}=cell(1,3); 
+    for j=1:3
+        uall{i}{j}=cell(1,3); %uall{t,str,sh,p}{u,v,w}{xy,yz,xz}
+        uall{i}{j}{1} = squeeze(umx{i}{j}(:,:,round(usize(3)/2)));
+        uall{i}{j}{2} = squeeze(umx{i}{j}(:,round(usize(2)/2),:));
+        uall{i}{j}{3} = squeeze(umx{i}{j}(round(usize(1)/2),:,:)); 
+    end
+end
+
+strname = cell(1,4);
+strname{1} = 'Translation';
+strname{2} = 'Uniaxial';
+strname{3} = 'Shear';
+strname{4} = 'Point Force';
+
+view{3} = 'xz';
+view{2} = 'yz';
+view{1} = 'xy';
+
+disp{3} = 'u3';
+disp{2} = 'u2';
+disp{1} = 'u1'; 
+
+for n=1:4
+        f = figure; set(f, 'Position', [50, 50, 1280, 320]); hold on;
+        colormap hot; set(gcf,'Color','white');
+    for i=1:3
+        subplot(3,9,[1 2 10 11]+(i-1)*3); imagesc(uall{n}{i}{1}); axis image; title([strname{n} ', u_' num2str(i) ' Component: X-Y']); colorbar;
+        set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); hold on;
+        subplot(3,9,[3 12]+(i-1)*3); imagesc(uall{n}{i}{2}); axis image; title('Y-Z'); colorbar;
+        set(gca,'YDir','normal','XDir','reverse','FontName','Helvetica','fontweight','b'); hold on;
+        subplot(3,9,[19 20]+(i-1)*3); imagesc(uall{n}{i}{3}'); axis image; title('X-Z'); colorbar;
+        set(gca,'YDir','normal','FontName','Helvetica','fontweight','b'); 
+    end
+    hold off;
+end
+
+displchoice = questdlg('Would you like to save the displacement fields?', ...
+    'Save displacements', ...
+    'Save to *.tif','Save to *.mat','No','No');
+% Handle response
+switch displchoice
+    case 'Save to *.tif'
+        for i=1:4
+            for j=1:3
+                for k=1:3;
+                imwrite(uint8(255*(uall{i}{j}{k}-min(uall{i}{j}{k}(:)))/(max(uall{i}{j}{k}(:))-min(uall{i}{j}{k}(:)))),[disp{j} view{k} strname{i} '.tif']);
+                end
+            end
+        end
+    case 'Save to *.mat'       
+        save('uall.mat','uall');
+    case 'No'
+end
