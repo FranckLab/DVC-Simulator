@@ -27,6 +27,8 @@ Here, the Matlab script synthetically deforms the input volume image according t
 ## Health warning!
 The DVC simulator requires a 3D stack to be read in, which depending on the volume size can require a **large amount of RAM** in Matlab, and thus when running the simulator from a laptop, we strongly suggest to use the resize option within the GUI to decrease the total stack dimensions. My macbook air can only handle 128 x 128 x 96 sufficiently. 
 
+Also, the algorithm expects the speckle pattern to cover the entire field-of-view of the image and will either error out or provide eroneous result if this is not the case.
+
 # FAQ
 **The GUI looks squashed and button don't appear properly, what should I do?**
 
